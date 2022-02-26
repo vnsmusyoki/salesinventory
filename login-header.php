@@ -40,7 +40,7 @@
             <!--Desktop Logo-->
             <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
                 <a href="index.php">
-                    <img src="assets/images/logo.svg" alt="Sales Inventory" title="Sales Inventory" />
+                    <img src="assets/logo.png" alt="Sales Inventory" title="Sales Inventory" />
                 </a>
             </div>
             <!--End Desktop Logo-->
