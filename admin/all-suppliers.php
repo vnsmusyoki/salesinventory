@@ -22,7 +22,7 @@ include 'admin.php';
 </head>
 
 <body class="nav-fixed">
- <?php include 'header.php'; ?>
+    <?php include 'header.php'; ?>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <?php include 'sidebar.php' ?>
@@ -36,9 +36,9 @@ include 'admin.php';
                                 <div class="col-auto mt-4">
                                     <h1 class="page-header-title">
                                         <div class="page-header-icon"><i data-feather="activity"></i></div>
-                                        All Products
+                                        All Suppliers
                                     </h1>
-                                    <div class="page-header-subtitle">Manage Your Products from this page</div>
+                                    <div class="page-header-subtitle">Manage Your Suppliers from this page</div>
                                 </div>
                                 <div class="col-12 col-xl-auto mt-4">
 
@@ -52,7 +52,7 @@ include 'admin.php';
 
 
                     <div class="card mb-4">
-                        <div class="card-header">All Products</div>
+                        <div class="card-header">All Suppliers</div>
                         <div class="card-body">
                             <table id="datatablesSimple">
                                 <thead>
@@ -82,8 +82,8 @@ include 'admin.php';
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    
-<?php
+
+                                    <?php
 include '../db-connection.php';
 $products = "SELECT * FROM `product`";
 $queryproducts = mysqli_query($conn, $products);
@@ -123,7 +123,7 @@ if ($productsrows >= 1) {
     }}
 
 ?>
-                                    
+
                                 </tbody>
                             </table>
                         </div>
