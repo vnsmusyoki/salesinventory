@@ -35,9 +35,9 @@ include 'admin.php';
                                 <div class="col-auto mt-4">
                                     <h1 class="page-header-title">
                                         <div class="page-header-icon"><i data-feather="activity"></i></div>
-                                        All Suppliers
+                                        All Products
                                     </h1>
-                                    <div class="page-header-subtitle">Manage Your Suppliers from this page</div>
+                                    <div class="page-header-subtitle">Manage Your Products from this page</div>
                                 </div>
                                 <div class="col-12 col-xl-auto mt-4">
 
@@ -51,28 +51,32 @@ include 'admin.php';
 
 
                     <div class="card mb-4">
-                        <div class="card-header">All Suppliers</div>
+                        <div class="card-header">All Products</div>
                         <div class="card-body">
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Username</th>
-                                        <th>Full Names</th>
-                                        <th>Phone Number</th>
-                                        <th>Company</th>
-                                        <th>Company Location</th>
+                                        <th>Date</th>
+                                        <th>Supplier</th>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Unit Price</th>
+                                        <th>Total Spend</th>
+                                        <th>Purchase Returns</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Username</th>
-                                        <th>Full Names</th>
-                                        <th>Phone Number</th>
-                                        <th>Company</th>
-                                        <th>Company Location</th>
+                                        <th>Date</th>
+                                        <th>Supplier</th>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Unit Price</th>
+                                        <th>Total Spend</th>
+                                        <th>Purchase Returns</th>
                                         <th>Actions</th>
                                     </tr>
                                 </tfoot>
@@ -80,43 +84,59 @@ include 'admin.php';
 
                                     <?php
                                     include '../db-connection.php';
-                                    $suppliers = "SELECT * FROM `supplier`";
-                                    $querysuppliers = mysqli_query($conn, $suppliers);
-                                    $suppliersrows = mysqli_num_rows($querysuppliers);
-                                    if ($suppliersrows >= 1) {
+                                    $purchases = "SELECT * FROM `purchases`";
+                                    $querypurchases = mysqli_query($conn, $purchases);
+                                    $purchasesrows = mysqli_num_rows($querypurchases);
+                                    if ($purchasesrows >= 1) {
                                         $count = 1;
-                                        while ($fetch  = mysqli_fetch_assoc($querysuppliers)) {
-                                            $supplierid = $fetch['supplier_id'];
-                                            $name = $fetch['supplier_name'];
-                                            $company = $fetch['supplier_company'];
-                                            $location = $fetch['supplier_location'];
-                                            $contact = $fetch['supplier_contact'];
-                                            $loginid = $fetch['supplier_login_id'];
-                                            $user = "SELECT * FROM `login` WHERE `login_id` = '$loginid'";
-                                            $queryuser = mysqli_query($conn, $user);
-                                            $userrows = mysqli_num_rows($queryuser);
-                                            if ($userrows >= 1) {
+                                        while ($fetch  = mysqli_fetch_assoc($querypurchases)) {
+                                            $date = $fetch['purchases_date'];
+                                            $supplier = $fetch['purchases_supplier_id'];
+                                            $product = $fetch['purchases_product_id'];
+                                            $quantity = $fetch['purchases_quantity'];
+                                            $unitprice = $fetch['purchases_product_unit_price'];
+                                            $returns = $fetch['purchases_returns'];
+                                            $tamount = $fetch['purchases_total_amount'];
+                                            $purchaseid = $fetch['purchases_id'];
+
+                                            $product = "SELECT * FROM `product` WHERE `product_id`='$product'";
+                                            $queryproduct = mysqli_query($conn, $product);
+                                            $productrows = mysqli_num_rows($queryproduct);
+                                            if ($productrows >= 1) {
                                                 $count = 1;
-                                                while ($fetchdata  = mysqli_fetch_assoc($queryuser)) {
-                                                    $username = $fetchdata['login_username'];
+                                                while ($fetch  = mysqli_fetch_assoc($queryproduct)) { 
+                                                    $productname = $fetch['product_name'];
+                                                }
+                                            }
+
+                                            $suppliercheck = "SELECT * FROM `supplier` WHERE `supplier_id`='$supplier'";
+                                            $querysuppliercheck = mysqli_query($conn, $suppliercheck);
+                                            $suppliercheckrows = mysqli_num_rows($querysuppliercheck);
+                                            if ($suppliercheckrows >= 1) {
+                                                $count = 1;
+                                                while ($fetch  = mysqli_fetch_assoc($querysuppliercheck)) { 
+                                                    $suppliercontact = $fetch['supplier_contact'];
+                                                    $suppliername = $fetch['supplier_name'];
                                                 }
                                             }
 
                                             echo "
-            <tr>
-                <td>$count</td>
-                <td>$username</td>
-                <td>$name</td>
-                <td>$contact</td>
-                <td>$company</td>
-                <td>$location</td> 
-                <td>
-                <a href='edit-supplier.php?supplier=$supplierid' class='btn btn-datatable btn-icon btn-transparent-dark me-2'><i data-feather='edit-3'></i></a>
-                <a href='delete-supplier.php?supplier=$supplierid' class='btn btn-datatable btn-icon btn-transparent-dark'><i data-feather='trash-2'></i></a>
-                </td>
+                                                <tr>
+                                                    <td>$count</td>
+                                                    <td>$date</td>
+                                                    <td>$suppliername - $suppliercontact</td>
+                                                    <td>$productname</td>
+                                                    <td>$quantity</td>
+                                                    <td>$unitprice</td>
+                                                    <td>$tamount</td>
+                                                    <td>$returns</td> 
+                                                    <td>
+                                                    <a href='edit-purchases.php?purchases=$purchaseid' class='btn btn-datatable btn-icon btn-transparent-dark me-2'><i data-feather='edit-3'></i></a>
+                                                    <a href='delete-purchases.php?purchases=$purchaseid' class='btn btn-datatable btn-icon btn-transparent-dark'><i data-feather='trash-2'></i></a>
+                                                    </td>
 
-            </tr>
-        ";
+                                                </tr>
+                                            ";
                                             $count++;
                                         }
                                     }

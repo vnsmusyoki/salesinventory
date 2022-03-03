@@ -16,11 +16,10 @@ include 'admin.php';
     <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
-    <script data-search-pseudo-elements="" defer=""
-        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script data-search-pseudo-elements="" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous">
     </script>
-        <link rel="stylesheet" type="text/css" href="../css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/toastr.min.css">
     <link rel="stylesheet" type="text/css" href="../css/toastr-btn.css">
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/toastr.min.js"></script>
@@ -28,11 +27,9 @@ include 'admin.php';
 </head>
 
 <body class="nav-fixed">
-    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
-        id="sidenavAccordion">
+    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
         <!-- Sidenav Toggle Button-->
-        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i
-                data-feather="menu"></i></button>
+        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>
 
         <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">SB Admin Pro</a>
         <!-- Navbar Search Input-->
@@ -47,8 +44,7 @@ include 'admin.php';
         <ul class="navbar-nav align-items-center ms-auto">
             <!-- Documentation Dropdown-->
             <li class="nav-item dropdown no-caret d-none d-md-block me-3">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                     <i class="fas fa-chevron-right dropdown-arrow"></i>
                 </a>
@@ -57,16 +53,12 @@ include 'admin.php';
             <!-- Navbar Search Dropdown-->
             <!-- * * Note: * * Visible only below the lg breakpoint-->
             <li class="nav-item dropdown no-caret me-3 d-lg-none">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                        data-feather="search"></i></a>
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="search"></i></a>
                 <!-- Dropdown - Search-->
-                <div class="dropdown-menu dropdown-menu-end p-3 shadow animated--fade-in-up"
-                    aria-labelledby="searchDropdown">
+                <div class="dropdown-menu dropdown-menu-end p-3 shadow animated--fade-in-up" aria-labelledby="searchDropdown">
                     <form class="form-inline me-auto w-100">
                         <div class="input-group input-group-joined input-group-solid">
-                            <input class="form-control pe-0" type="text" placeholder="Search for..." aria-label="Search"
-                                aria-describedby="basic-addon2" />
+                            <input class="form-control pe-0" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
                             <div class="input-group-text"><i data-feather="search"></i></div>
                         </div>
                     </form>
@@ -74,31 +66,21 @@ include 'admin.php';
             </li>
             <!-- Alerts Dropdown-->
             <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts"
-                    href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><i data-feather="bell"></i></a>
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
             </li>
             <!-- Messages Dropdown-->
             <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages"
-                    href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><i data-feather="mail"></i></a>
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="mail"></i></a>
             </li>
             <!-- User Dropdown-->
             <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
-                    href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><img class="img-fluid"
-                        src="assets/img/illustrations/profiles/profile-1.png" /></a>
-                <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
-                    aria-labelledby="navbarDropdownUserImage">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="assets/img/illustrations/profiles/profile-1.png" /></a>
+                <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                     <h6 class="dropdown-header d-flex align-items-center">
                         <img class="dropdown-user-img" src="assets/img/illustrations/profiles/profile-1.png" />
                         <div class="dropdown-user-details">
                             <div class="dropdown-user-details-name"><?php echo $globaluserfullname; ?></div>
-                            <div class="dropdown-user-details-email"><a href="/cdn-cgi/l/email-protection"
-                                    class="__cf_email__"
-                                    data-cfemail="d4a2b8a1bab594b5bbb8fab7bbb9"><?php echo $globaluseremail; ?></a>
+                            <div class="dropdown-user-details-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d4a2b8a1bab594b5bbb8fab7bbb9"><?php echo $globaluseremail; ?></a>
                             </div>
                         </div>
                     </h6>
@@ -149,35 +131,30 @@ include 'admin.php';
                                         <div class="sbp-preview">
                                             <div class="sbp-preview-content">
                                                 <form method="POST" action="">
-                                                <?php
+                                                    <?php
 
-if (isset($_POST["addproduct"])) {
+                                                    if (isset($_POST["addproduct"])) {
 
-    require 'functions/add-product.php';
-}
-?>
-                                <?php echo $message; ?>
+                                                        require 'functions/add-product.php';
+                                                    }
+                                                    ?>
+                                                    <?php echo $message; ?>
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlInput1">Batch
                                                                     Number</label>
-                                                                <input class="form-control"
-                                                                    id="exampleFormControlInput1" type="text"
-                                                                    placeholder="" name="batch_number"
-                                                                    value="<?php echo $batch_number; ?>" />
+                                                                <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="batch_number" value="<?php echo $batch_number; ?>" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <label for="exampleFormControlInput1">Date of
                                                                 Manufacture</label>
-                                                            <input class="form-control" id="exampleFormControlInput1"
-                                                                type="date" placeholder="" name="manufacture_date" />
+                                                            <input class="form-control" id="exampleFormControlInput1" type="date" placeholder="" name="manufacture_date" />
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <label for="exampleFormControlInput1">Date of Expiry</label>
-                                                            <input class="form-control" id="exampleFormControlInput1"
-                                                                type="date" placeholder="" name="expiry_date" />
+                                                            <input class="form-control" id="exampleFormControlInput1" type="date" placeholder="" name="expiry_date" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -185,8 +162,7 @@ if (isset($_POST["addproduct"])) {
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlSelect1">Product
                                                                     Category</label>
-                                                                <select class="form-control"
-                                                                    id="exampleFormControlSelect1" name="product_category">
+                                                                <select class="form-control" id="exampleFormControlSelect1" name="product_category">
                                                                     <option value="">click to select</option>
                                                                     <option value="Electronics">Electronics</option>
                                                                     <option value="Computers">Computers</option>
@@ -196,40 +172,36 @@ if (isset($_POST["addproduct"])) {
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
-                                                        <label for="exampleFormControlSelect2">Product SUb
-                                                            Category</label>
-                                                        <select class="form-control" id="exampleFormControlSelect2" name="product_subcategory">
-                                                            <option value="">click to select</option>
-                                                            <option value="HP Laptops">HP Laptops</option>
-                                                            <option value="Dell Machines">Dell Machines</option>
-                                                            <option value="Beds">Beds</option>
-                                                            <option value="Closets">Closets</option>
-                                                        </select>
-                                                    </div>
+                                                                <label for="exampleFormControlSelect2">Product SUb
+                                                                    Category</label>
+                                                                <select class="form-control" id="exampleFormControlSelect2" name="product_subcategory">
+                                                                    <option value="">click to select</option>
+                                                                    <option value="HP Laptops">HP Laptops</option>
+                                                                    <option value="Dell Machines">Dell Machines</option>
+                                                                    <option value="Beds">Beds</option>
+                                                                    <option value="Closets">Closets</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <div class="col-lg-3">
-                                                        <label for="exampleFormControlInput1">Unit Price</label>
-                                                            <input class="form-control" id="exampleFormControlInput1"
-                                                                type="number" placeholder="" name="unit_price" value="<?php echo $unit_price; ?>" />
+                                                            <label for="exampleFormControlInput1">Unit Price</label>
+                                                            <input class="form-control" id="exampleFormControlInput1" type="number" placeholder="" name="unit_price" value="<?php echo $unit_price; ?>" />
                                                         </div>
                                                         <div class="col-lg-3">
-                                                        <label for="exampleFormControlInput1">Product Amount</label>
-                                                            <input class="form-control" id="exampleFormControlInput1"
-                                                                type="number" placeholder="" name="product_amount" value="<?php echo $product_amount; ?>" />
+                                                            <label for="exampleFormControlInput1">Product Amount</label>
+                                                            <input class="form-control" id="exampleFormControlInput1" type="number" placeholder="" name="product_amount" value="<?php echo $product_amount; ?>" />
                                                         </div>
 
                                                     </div>
 
-                                                    
+
                                                     <div class="mb-0">
                                                         <label for="exampleFormControlTextarea1">Product
                                                             Description</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                            name="description" 
-                                                            rows="3"><?php echo $description; ?></textarea>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"><?php echo $description; ?></textarea>
                                                     </div>
                                                     <br>
-                                                    <button class="btn btn-primary btn-sm" type="submit" name="addproduct" >Upload New Product</button>
+                                                    <button class="btn btn-primary btn-sm" type="submit" name="addproduct">Upload New Product</button>
                                                 </form>
                                             </div>
                                         </div>

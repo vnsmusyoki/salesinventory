@@ -107,17 +107,13 @@
             <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                 data-bs-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
                 <div class="nav-link-icon"><i data-feather="tool"></i></div>
-                Utilities
+                Sales
                 <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapseUtilities" data-bs-parent="#accordionSidenav">
                 <nav class="sidenav-menu-nested nav">
-                    <a class="nav-link" href="animations.html">Animations</a>
-                    <a class="nav-link" href="background.html">Background</a>
-                    <a class="nav-link" href="borders.html">Borders</a>
-                    <a class="nav-link" href="lift.html">Lift</a>
-                    <a class="nav-link" href="shadows.html">Shadows</a>
-                    <a class="nav-link" href="typography.html">Typography</a>
+                    <a class="nav-link" href="all-sales.php">All Sales</a>
+                    <a class="nav-link" href="add-sales.php">Add New Sales</a> 
                 </nav>
             </div>
             <!-- Sidenav Heading (Addons)-->
