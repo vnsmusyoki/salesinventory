@@ -47,7 +47,7 @@
             <div class="collapse" id="collapsePages" data-bs-parent="#accordionSidenav">
                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
                     <a class="nav-link" href="add-inventory.php">Add Inventory</a>
-                    <a class="nav-link" href="invoice.html">All Inventories</a>
+                    <a class="nav-link" href="all-inventories.php">All Inventories</a>
                 </nav>
             </div>
             <!-- Sidenav Accordion (Applications)-->
@@ -117,16 +117,16 @@
                 </nav>
             </div>
             <!-- Sidenav Heading (Addons)-->
-            <div class="sidenav-menu-heading">Plugins</div>
+            <div class="sidenav-menu-heading">Account</div>
             <!-- Sidenav Link (Charts)-->
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="account-security.php">
                 <div class="nav-link-icon"><i data-feather="bar-chart"></i></div>
-                Charts
+                Update Password
             </a>
             <!-- Sidenav Link (Tables)-->
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link" href="add-admin.php">
                 <div class="nav-link-icon"><i data-feather="filter"></i></div>
-                Tables
+                Add Admins
             </a>
         </div>
     </div>

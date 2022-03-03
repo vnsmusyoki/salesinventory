@@ -28,6 +28,7 @@ if (!isset($_SESSION['admin'])) {
             global $globaluserid;
             global $globaluserfullname;
             global $globaluseremail;
+            global $globalloggedinid;
             global $globalusermobile; 
         }
     }

@@ -1,6 +1,7 @@
 <?php
 include 'admin.php';
 ?>
+<?php $customer_contact = $full_names = $customer_email = $customer_location   = $message = ''; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,14 +16,18 @@ include 'admin.php';
     <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
-    <script data-search-pseudo-elements="" defer=""
-        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script data-search-pseudo-elements="" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" type="text/css" href="../css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/toastr-btn.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/toastr.min.js"></script>
+    <script src="../js/toastr-options.js"></script>
 </head>
 
 <body class="nav-fixed">
-<?php  include 'header.php'; ?>
+    <?php include 'header.php'; ?>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <?php include 'sidebar.php' ?>
@@ -36,9 +41,9 @@ include 'admin.php';
                                 <div class="col-auto mt-4">
                                     <h1 class="page-header-title">
                                         <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                        Add Inventory
+                                        Account Security
                                     </h1>
-                                    <div class="page-header-subtitle">Upload New inventory from this page</div>
+                                    <div class="page-header-subtitle">Account Security</div>
                                 </div>
                             </div>
                         </div>
@@ -51,45 +56,35 @@ include 'admin.php';
                             <!-- Default Bootstrap Form Controls-->
                             <div id="default">
                                 <div class="card mb-4">
-                                    <div class="card-header">Adding New Inventory</div>
+                                    <div class="card-header">Update Password</div>
                                     <div class="card-body">
                                         <!-- Component Preview-->
                                         <div class="sbp-preview">
                                             <div class="sbp-preview-content">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlInput1">Email address</label>
-                                                        <input class="form-control" id="exampleFormControlInput1"
-                                                            type="email" placeholder="name@example.com" />
+                                                <form method="POST" action="">
+                                                    <?php
+
+                                                    if (isset($_POST["updatepassword"])) {
+
+                                                        require 'functions/account-security.php';
+                                                    }
+                                                    ?>
+                                                    <?php echo $message; ?>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="exampleFormControlInput1">Password</label>
+                                                                <input class="form-control" id="exampleFormControlInput1" type="password" placeholder="" name="password" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label for="exampleFormControlInput1">Confirm Account Password</label>
+                                                            <input class="form-control" id="exampleFormControlInput1" type="password" placeholder="" name="confirm_password"  />
+                                                        </div>
+                                                        
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlSelect1">Example select</label>
-                                                        <select class="form-control" id="exampleFormControlSelect1">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlSelect2">Example multiple
-                                                            select</label>
-                                                        <select class="form-control" id="exampleFormControlSelect2"
-                                                            multiple="">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-0">
-                                                        <label for="exampleFormControlTextarea1">Example
-                                                            textarea</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                            rows="3"></textarea>
-                                                    </div>
+                                                    <br>
+                                                    <button class="btn btn-primary btn-sm" type="submit" name="updatepassword">Confirm Password</button>
                                                 </form>
                                             </div>
                                         </div>
