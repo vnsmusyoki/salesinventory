@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php $full_names = $email_address = $password = $confirm_password = $username = $phone_number = $message = ''; ?><!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
@@ -16,6 +16,11 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="css/toastr-btn.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/toastr.min.js"></script>
+    <script src="js/toastr-options.js"></script>
 </head>
 
 <body class="page-template belle">
