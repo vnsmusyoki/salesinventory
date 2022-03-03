@@ -1,7 +1,7 @@
 <?php
 include 'admin.php';
 ?>
-<?php $purchase_date = $purchase_returns = $unit_price = $quantity   = $message = ''; ?>
+<?php $sales_date = $purchase_returns = $unit_price = $quantity   = $message = ''; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,20 +74,20 @@ include 'admin.php';
 
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlSelect1">
-                                                                    Supplier Name</label>
-                                                                <select class="form-control" id="exampleFormControlSelect1" name="supplier_id">
+                                                                    Customer Name</label>
+                                                                <select class="form-control" id="exampleFormControlSelect1" name="customer_id">
                                                                     <option value="">click to select</option>
                                                                     <?php
                                                                     include '../db-connection.php';
                                                                     
-                                                                    $suppliers = "SELECT * FROM `supplier`";
+                                                                    $suppliers = "SELECT * FROM `customer`";
                                                                     $querysuppliers = mysqli_query($conn, $suppliers);
                                                                     $suppliersrows = mysqli_num_rows($querysuppliers);
                                                                     if ($suppliersrows >= 1) {
                                                                         $count = 1;
                                                                         while ($fetch  = mysqli_fetch_assoc($querysuppliers)) {
-                                                                            $supplierid = $fetch['supplier_id'];
-                                                                            $name = $fetch['supplier_name'];
+                                                                            $supplierid = $fetch['customer_id'];
+                                                                            $name = $fetch['customer_name'];
                                                                             echo "<option value='$supplierid'>$name</option>";
                                                                         }
                                                                     }
@@ -120,8 +120,8 @@ include 'admin.php';
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-3">
-                                                            <label for="exampleFormControlInput1">Purchase Date</label></label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="date" placeholder="" name="purchase_date" value="<?php echo $purchase_date; ?>" />
+                                                            <label for="exampleFormControlInput1">Sales Date</label></label>
+                                                            <input class="form-control" id="exampleFormControlInput1" type="date" placeholder="" name="sales_date" value="<?php echo $sales_date; ?>" />
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <label for="exampleFormControlInput1">Quantity</label>
@@ -137,7 +137,7 @@ include 'admin.php';
                                                         </div>
                                                     </div>
                                                     <br>
-                                                    <button class="btn btn-primary btn-sm" type="submit" name="addsupplier">Add New Purchase</button>
+                                                    <button class="btn btn-primary btn-sm" type="submit" name="addsales">Add New Sales</button>
                                                 </form>
                                             </div>
                                         </div>

@@ -4,6 +4,7 @@ $contact = mysqli_real_escape_string($conn, $_POST['customer_contact']);
 $email = mysqli_real_escape_string($conn, $_POST['customer_email']);
 $location = mysqli_real_escape_string($conn, $_POST['customer_location']);
 $fullnames = mysqli_real_escape_string($conn, $_POST['full_names']);  
+$customerrecord = mysqli_real_escape_string($conn, $_POST['customerrecord']);  
 $contact_length = strlen($contact); 
 if (empty($contact) || empty($email) || empty($location) || empty($fullnames) ) {
     $message = "
@@ -24,17 +25,8 @@ if (empty($contact) || empty($email) || empty($location) || empty($fullnames) ) 
     </script>
 ";
 }else {
-    $checkbatch = "SELECT *  FROM `customer` WHERE `customer_contact` = '$contact' OR `customer_email`='$email'";
-    $querybatch = mysqli_query($conn, $checkbatch);
-    $checkbatchrows = mysqli_num_rows($querybatch);
-    if ($checkbatchrows >= 1) {
-        $message = "
-        <script>
-            toastr.error('Phone Number/Email Adress. Please confirm your number/email again .');
-        </script>";
-    } else {
-                $password = md5($password);
-                $insertproduct = "INSERT INTO `customer`(`customer_name`, `customer_location`, `customer_email`, `customer_contact`) VALUES ('$fullnames', '$location','$email','$contact')";
+ 
+                $insertproduct = "UPDATE `customer` SET `customer_name`='$fullnames', `customer_location`='$location', `customer_email`='$email', `customer_contact`='$contact' WHERE `customer_id`='$customerrecord'";
                 $querylogin = mysqli_query($conn, $insertproduct);
                 $lastid =  mysqli_insert_id($conn);
                 if ($querylogin) { 
@@ -45,4 +37,3 @@ if (empty($contact) || empty($email) || empty($location) || empty($fullnames) ) 
                         echo "<script>window.location.replace('all-customers.php');</script>";
                     }
                 }     
-}
