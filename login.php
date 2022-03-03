@@ -60,8 +60,8 @@ if (isset($_POST["loginaccount"])) {
                                 <div class="row">
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="form-group">
-                                            <label for="CustomerEmail">Email</label>
-                                            <input type="email" name="username" placeholder=""
+                                            <label for="CustomerEmail">Username</label>
+                                            <input type="text" name="username" placeholder=""
                                                 value="<?php echo $username; ?>" class="" autocorrect="off"
                                                 autocapitalize="off" autofocus="">
                                         </div>
