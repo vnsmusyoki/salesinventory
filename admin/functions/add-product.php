@@ -10,7 +10,6 @@ $product_amount = mysqli_real_escape_string($conn, $_POST['product_amount']);
 $description = mysqli_real_escape_string($conn, $_POST['description']);  
 $batch_length = strlen($batch_number); 
 if (empty($batch_number) || empty($manufacture_date) || empty($expiry_date) || empty($product_category) || empty($product_subcategory) || empty($unit_price) || empty($product_amount) || empty($description)) {
- 
     $message = "
         <script>
             toastr.error('Please Provide all the details needed');
@@ -38,8 +37,6 @@ if (empty($batch_number) || empty($manufacture_date) || empty($expiry_date) || e
             toastr.error('Batch Number already exists. Please confirm your number again .');
         </script>";
     } else {
-      
-
                 $password = md5($password);
                 $insertproduct = "INSERT INTO `product`(`product_category`, `product_sub_category`, `product_description`, `product_date_of_manufacture`, `product_batch_number`, `product_expiry_date`, `product_unit_price`, `product_amount`) VALUES ('$product_category','$product_subcategory','$description','$manufacture_date','$batch_number','$expiry_date','$unit_price','$product_amount')";
                 $querylogin = mysqli_query($conn, $insertproduct);
@@ -51,8 +48,5 @@ if (empty($batch_number) || empty($manufacture_date) || empty($expiry_date) || e
                         </script>";
                         echo "<script>window.location.replace('all-products.php');</script>";
                     }
-                }
-            
-        
-    
+                }     
 }

@@ -2,6 +2,23 @@
 include 'admin.php';
 ?>
 <?php $customer_contact = $full_names = $customer_email = $customer_location   = $message = ''; ?>
+<?php
+include '../db-connection.php';
+$customer = $_GET['customer'];
+$customers = "SELECT * FROM `customer` WHERE `customer_id` = '$customer'";
+$querycustomers = mysqli_query($conn, $customers);
+$customersrows = mysqli_num_rows($querycustomers);
+if ($customersrows >= 1) {
+    $count = 1;
+    while ($fetch  = mysqli_fetch_assoc($querycustomers)) {
+        $globalname = $fetch['customer_name']; 
+        $globallocation = $fetch['customer_location']; 
+        $globalemail = $fetch['customer_email']; 
+        $globalcontact = $fetch['customer_contact'];  
+        global $globalname;global $globallocation;global $globalemail;global $globalcontact;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,9 +58,9 @@ include 'admin.php';
                                 <div class="col-auto mt-4">
                                     <h1 class="page-header-title">
                                         <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                        Add Customer
+                                        Edit Customer
                                     </h1>
-                                    <div class="page-header-subtitle">Upload New Customer from this page</div>
+                                    <div class="page-header-subtitle">Edit Customer from this page</div>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +73,7 @@ include 'admin.php';
                             <!-- Default Bootstrap Form Controls-->
                             <div id="default">
                                 <div class="card mb-4">
-                                    <div class="card-header">Adding New Customer</div>
+                                    <div class="card-header">Edit Customer</div>
                                     <div class="card-body">
                                         <!-- Component Preview-->
                                         <div class="sbp-preview">
@@ -66,7 +83,7 @@ include 'admin.php';
 
                                                     if (isset($_POST["addcustomer"])) {
 
-                                                        require 'functions/add-customer.php';
+                                                        require 'functions/edit-customer.php';
                                                     }
                                                     ?>
                                                     <?php echo $message; ?>
@@ -74,26 +91,26 @@ include 'admin.php';
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlInput1">Full Names</label>
-                                                                <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="full_names" value="<?php echo $full_names; ?>" />
+                                                                <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="full_names" value="<?php echo $globalname; ?>" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label for="exampleFormControlInput1">Customer Location</label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="customer_location" value="<?php echo $customer_location; ?>" />
+                                                            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="customer_location" value="<?php echo $globallocation; ?>" />
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label for="exampleFormControlInput1">Customer Email </label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="email" placeholder="" name="customer_email" value="<?php echo $customer_email; ?>" />
+                                                            <input class="form-control" id="exampleFormControlInput1" type="email" placeholder="" name="customer_email" value="<?php echo $globalemail; ?>" />
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label for="exampleFormControlInput1">Customer Contact </label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="customer_contact" value="<?php echo $customer_contact; ?>" />
+                                                            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="customer_contact" value="<?php echo $globalcontact; ?>" />
                                                         </div>
                                                     </div>
-                                                   
+                                                   <input type="hidden" name="customerrecord" value="<?php echo $customer; ?>">
 
                                                     <br>
-                                                    <button class="btn btn-primary btn-sm" type="submit" name="addcustomer">Upload New Customer</button>
+                                                    <button class="btn btn-danger btn-sm" type="submit" name="addcustomer">Edit New Customer</button>
                                                 </form>
                                             </div>
                                         </div>
