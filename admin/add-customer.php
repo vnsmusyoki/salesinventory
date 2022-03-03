@@ -1,7 +1,7 @@
 <?php
 include 'admin.php';
 ?>
-<?php $batch_number = $unit_price = $product_amount = $description   = $message = ''; ?>
+<?php $customer_contact = $full_names = $customer_email = $customer_location   = $message = ''; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +27,7 @@ include 'admin.php';
 </head>
 
 <body class="nav-fixed">
-    <?php  include 'header.php'; ?>
+    <?php include 'header.php'; ?>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <?php include 'sidebar.php' ?>
@@ -41,9 +41,9 @@ include 'admin.php';
                                 <div class="col-auto mt-4">
                                     <h1 class="page-header-title">
                                         <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                        Add Product
+                                        Add Customer
                                     </h1>
-                                    <div class="page-header-subtitle">Upload New Product from this page</div>
+                                    <div class="page-header-subtitle">Upload New Customer from this page</div>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@ include 'admin.php';
                             <!-- Default Bootstrap Form Controls-->
                             <div id="default">
                                 <div class="card mb-4">
-                                    <div class="card-header">Adding New Product</div>
+                                    <div class="card-header">Adding New Customer</div>
                                     <div class="card-body">
                                         <!-- Component Preview-->
                                         <div class="sbp-preview">
@@ -64,66 +64,33 @@ include 'admin.php';
                                                 <form method="POST" action="">
                                                     <?php
 
-                                                    if (isset($_POST["addproduct"])) {
+                                                    if (isset($_POST["addcustomer"])) {
 
-                                                        require 'functions/add-product.php';
+                                                        require 'functions/add-customer.php';
                                                     }
                                                     ?>
                                                     <?php echo $message; ?>
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
-                                                                <label for="exampleFormControlInput1">Batch
-                                                                    Number</label>
-                                                                <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="batch_number" value="<?php echo $batch_number; ?>" />
+                                                                <label for="exampleFormControlInput1">Full Names</label>
+                                                                <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="full_names" value="<?php echo $full_names; ?>" />
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
-                                                            <label for="exampleFormControlInput1">Date of
-                                                                Manufacture</label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="date" placeholder="" name="manufacture_date" />
+                                                        <div class="col-lg-6">
+                                                            <label for="exampleFormControlInput1">Customer Location</label>
+                                                            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="customer_location" value="<?php echo $customer_location; ?>" />
                                                         </div>
-                                                        <div class="col-lg-3">
-                                                            <label for="exampleFormControlInput1">Date of Expiry</label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="date" placeholder="" name="expiry_date" />
+                                                        <div class="col-lg-6">
+                                                            <label for="exampleFormControlInput1">Customer Email </label>
+                                                            <input class="form-control" id="exampleFormControlInput1" type="email" placeholder="" name="customer_email" value="<?php echo $customer_email; ?>" />
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label for="exampleFormControlInput1">Customer Contact </label>
+                                                            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="customer_contact" value="<?php echo $customer_contact; ?>" />
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="exampleFormControlSelect1">Product
-                                                                    Category</label>
-                                                                <select class="form-control" id="exampleFormControlSelect1" name="product_category">
-                                                                    <option value="">click to select</option>
-                                                                    <option value="Electronics">Electronics</option>
-                                                                    <option value="Computers">Computers</option>
-                                                                    <option value="Furniture">Furniture</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="exampleFormControlSelect2">Product SUb
-                                                                    Category</label>
-                                                                <select class="form-control" id="exampleFormControlSelect2" name="product_subcategory">
-                                                                    <option value="">click to select</option>
-                                                                    <option value="HP Laptops">HP Laptops</option>
-                                                                    <option value="Dell Machines">Dell Machines</option>
-                                                                    <option value="Beds">Beds</option>
-                                                                    <option value="Closets">Closets</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <label for="exampleFormControlInput1">Unit Price</label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="number" placeholder="" name="unit_price" value="<?php echo $unit_price; ?>" />
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <label for="exampleFormControlInput1">Product Amount</label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="number" placeholder="" name="product_amount" value="<?php echo $product_amount; ?>" />
-                                                        </div>
-
-                                                    </div>
+                                                   
 
 
                                                     <div class="mb-0">
@@ -132,7 +99,7 @@ include 'admin.php';
                                                         <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"><?php echo $description; ?></textarea>
                                                     </div>
                                                     <br>
-                                                    <button class="btn btn-primary btn-sm" type="submit" name="addproduct">Upload New Product</button>
+                                                    <button class="btn btn-primary btn-sm" type="submit" name="addcustomer">Upload New Customer</button>
                                                 </form>
                                             </div>
                                         </div>
