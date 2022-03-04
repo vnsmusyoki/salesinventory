@@ -13,15 +13,15 @@ if (!isset($_SESSION['admin'])) {
             $globalusername = $fetch['login_username'];
             $globalloggedinid = $fetch['login_id'];
 
-            $checkclient = "SELECT *  FROM `user` WHERE `user_login_id`= '$globalloggedinid'";
+            $checkclient = "SELECT *  FROM `admin` WHERE `admin_login_id`= '$globalloggedinid'";
             $queryemail = mysqli_query($conn, $checkclient);
             $checkclientrows = mysqli_num_rows($queryemail);
             if ($checkclientrows >= 1) {
                 while ($fetchuser = mysqli_fetch_assoc($queryemail)) {
                     $globaluserid = $fetchuser['user_id'];
-                    $globaluserfullname = $fetchuser['user_full_names'];
-                    $globalusermobile = $fetchuser['user_phone_number'];
-                    $globaluseremail = $fetchuser['user_email_address']; 
+                    $globaluserfullname = $fetchuser['admin_full_names'];
+                    $globalusermobile = $fetchuser['admin_phone_number'];
+                    $globaluseremail = $fetchuser['admin_email_address']; 
                 }
             }
 
