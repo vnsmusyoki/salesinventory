@@ -1,10 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['supplier'])) {
     header('Location: ../index.php');
 } else {
     include '../db-connection.php';
-    $email_username = $_SESSION['user'];
+    $email_username = $_SESSION['supplier'];
     $checkemail = "SELECT *  FROM `login` WHERE `login_username`= '$email_username'";
     $queryemail = mysqli_query($conn, $checkemail);
     $checkemailrows = mysqli_num_rows($queryemail);
@@ -13,15 +13,16 @@ if (!isset($_SESSION['user'])) {
             $globalusername = $fetch['login_username'];
             $globalloggedinid = $fetch['login_id'];
 
-            $checkclient = "SELECT *  FROM `user` WHERE `user_login_id`= '$globalloggedinid'";
+            $checkclient = "SELECT *  FROM `supplier` WHERE `supplier_login_id`= '$globalloggedinid'";
             $queryemail = mysqli_query($conn, $checkclient);
             $checkclientrows = mysqli_num_rows($queryemail);
             if ($checkclientrows >= 1) {
                 while ($fetchuser = mysqli_fetch_assoc($queryemail)) {
-                    $globaluserid = $fetchuser['user_id'];
-                    $globaluserfullname = $fetchuser['user_full_names'];
-                    $globalusermobile = $fetchuser['user_phone_number'];
-                    $globaluseremail = $fetchuser['user_email_address']; 
+                    $globaluserid = $fetchuser['supplier_id'];
+                    $globaluserfullname = $fetchuser['supplier_name'];
+                    $globalusercompany = $fetchuser['supplier_company'];
+                    $globaluseremail = $fetchuser['supplier_location']; 
+                    $globalusermobile = $fetchuser['supplier_contact']; 
                 }
             }
 

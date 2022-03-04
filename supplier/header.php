@@ -4,7 +4,7 @@
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i
                 data-feather="menu"></i></button>
 
-        <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="dashboard.php">Cashier Account</a>
+        <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="dashboard.php">Supplier Account</a>
         <!-- Navbar Search Input-->
         <!-- * * Note: * * Visible only on and above the lg breakpoint-->
         <form class="form-inline me-auto d-none d-lg-block me-3">

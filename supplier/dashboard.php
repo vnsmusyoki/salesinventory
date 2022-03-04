@@ -1,5 +1,5 @@
 <?php
-include 'cashier.php';
+include 'supplier.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ include 'cashier.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - Cashier Dashboard</title>
+    <title>Dashboard - Supplier Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
@@ -58,56 +58,73 @@ include 'cashier.php';
                         <div class="card-header">All Products</div>
                         <div class="card-body">
                         <table class="display" id="products" style="width:100%;">
-                                <thead>
+                        <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Batch Number</th>
-                                        <th>Category</th>
-                                        <th>SUb Category</th>
-                                        <th>manufacture Date</th>
-                                        <th>Expiry Date</th>
+                                        <th>Date</th>
+                                        <th>Supplier</th>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
                                         <th>Unit Price</th>
-                                        <th>Quantity</th> 
+                                        <th>Amount Paid</th> 
                                     </tr>
                                 </thead> 
                                 <tbody>
 
                                     <?php
                                     include '../db-connection.php';
-                                    $products = "SELECT * FROM `product`";
-                                    $queryproducts = mysqli_query($conn, $products);
-                                    $productsrows = mysqli_num_rows($queryproducts);
-                                    if ($productsrows >= 1) {
+                                    $purchases = "SELECT * FROM `purchases` WHERE `purchases_supplier_id`='$globaluserid'";
+                                    $querypurchases = mysqli_query($conn, $purchases);
+                                    $purchasesrows = mysqli_num_rows($querypurchases);
+                                    if ($purchasesrows >= 1) {
                                         $count = 1;
-                                        while ($fetch  = mysqli_fetch_assoc($queryproducts)) {
-                                            $batch = $fetch['product_batch_number'];
-                                            $cat = $fetch['product_category'];
-                                            $subcat = $fetch['product_sub_category'];
-                                            $description = $fetch['product_description'];
-                                            $mfgdate = $fetch['product_date_of_manufacture'];
-                                            $expiry = $fetch['product_expiry_date'];
-                                            $price = $fetch['product_unit_price'];
-                                            $amount = $fetch['product_amount'];
-                                            $proid = $fetch['product_id'];
+                                        while ($fetch  = mysqli_fetch_assoc($querypurchases)) {
+                                            $date = $fetch['purchases_date'];
+                                            $supplier = $fetch['purchases_supplier_id'];
+                                            $product = $fetch['purchases_product_id'];
+                                            $quantity = $fetch['purchases_quantity'];
+                                            $unitprice = $fetch['purchases_product_unit_price'];
+                                            $returns = $fetch['purchases_returns'];
+                                            $tamount = $fetch['purchases_total_amount'];
+                                            $purchaseid = $fetch['purchases_id'];
 
+                                            $product = "SELECT * FROM `product` WHERE `product_id`='$product'";
+                                            $queryproduct = mysqli_query($conn, $product);
+                                            $productrows = mysqli_num_rows($queryproduct);
+                                            if ($productrows >= 1) {
+                                                $count = 1;
+                                                while ($fetch  = mysqli_fetch_assoc($queryproduct)) { 
+                                                    $productname = $fetch['product_name'];
+                                                }
+                                            }
+
+                                            $suppliercheck = "SELECT * FROM `supplier` WHERE `supplier_id`='$supplier'";
+                                            $querysuppliercheck = mysqli_query($conn, $suppliercheck);
+                                            $suppliercheckrows = mysqli_num_rows($querysuppliercheck);
+                                            if ($suppliercheckrows >= 1) {
+                                                $count = 1;
+                                                while ($fetch  = mysqli_fetch_assoc($querysuppliercheck)) { 
+                                                    $suppliercontact = $fetch['supplier_contact'];
+                                                    $suppliername = $fetch['supplier_name'];
+                                                }
+                                            }
 
                                             echo "
                                                 <tr>
                                                     <td>$count</td>
-                                                    <td>$batch</td>
-                                                    <td>$cat</td>
-                                                    <td>$subcat</td>
-                                                    <td>$mfgdate</td>
-                                                    <td>$expiry</td>
-                                                    <td>$price</td>
-                                                    <td>$amount</td>
-                                                     
+                                                    <td>$date</td>
+                                                    <td>$suppliername - $suppliercontact</td>
+                                                    <td>$productname</td>
+                                                    <td>$quantity</td>
+                                                    <td>Kshs. $unitprice</td>
+                                                    <td>Kshs. $tamount</td> 
+                                                    
 
                                                 </tr>
                                             ";
-                                                                                $count++;
-                                                                            }
-                                                                        }
+                                            $count++;
+                                        }
+                                    }
 
                                     ?>
 

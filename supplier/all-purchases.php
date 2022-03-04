@@ -1,5 +1,5 @@
 <?php
-include 'admin.php';
+include 'supplier.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,9 +35,9 @@ include 'admin.php';
                                 <div class="col-auto mt-4">
                                     <h1 class="page-header-title">
                                         <div class="page-header-icon"><i data-feather="activity"></i></div>
-                                        All Products
+                                        All Sales
                                     </h1>
-                                    <div class="page-header-subtitle">Manage Your Products from this page</div>
+                                    <div class="page-header-subtitle">Manage Your Sales from this page</div>
                                 </div>
                                 <div class="col-12 col-xl-auto mt-4">
 
@@ -51,7 +51,7 @@ include 'admin.php';
 
 
                     <div class="card mb-4">
-                        <div class="card-header">All Products</div>
+                        <div class="card-header">All Sales</div>
                         <div class="card-body">
                             <table id="datatablesSimple">
                                 <thead>
@@ -62,9 +62,7 @@ include 'admin.php';
                                         <th>Product</th>
                                         <th>Quantity</th>
                                         <th>Unit Price</th>
-                                        <th>Total Spend</th>
-                                        <th>Purchase Returns</th>
-                                        <th>Actions</th>
+                                        <th>Total Amount</th> 
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -75,16 +73,14 @@ include 'admin.php';
                                         <th>Product</th>
                                         <th>Quantity</th>
                                         <th>Unit Price</th>
-                                        <th>Total Spend</th>
-                                        <th>Purchase Returns</th>
-                                        <th>Actions</th>
+                                        <th>Total Amount</th> 
                                     </tr>
                                 </tfoot>
                                 <tbody>
 
                                     <?php
                                     include '../db-connection.php';
-                                    $purchases = "SELECT * FROM `purchases`";
+                                    $purchases = "SELECT * FROM `purchases` WHERE `purchases_supplier_id`='$globaluserid' ";
                                     $querypurchases = mysqli_query($conn, $purchases);
                                     $purchasesrows = mysqli_num_rows($querypurchases);
                                     if ($purchasesrows >= 1) {
@@ -127,13 +123,9 @@ include 'admin.php';
                                                     <td>$suppliername - $suppliercontact</td>
                                                     <td>$productname</td>
                                                     <td>$quantity</td>
-                                                    <td>$unitprice</td>
-                                                    <td>$tamount</td>
-                                                    <td>$returns</td> 
-                                                    <td>
-                                                    <a href='edit-purchases.php?purchases=$purchaseid' class='btn btn-datatable btn-icon btn-transparent-dark me-2'><i data-feather='edit-3'></i></a>
-                                                    <a href='delete-purchases.php?purchases=$purchaseid' class='btn btn-datatable btn-icon btn-transparent-dark'><i data-feather='trash-2'></i></a>
-                                                    </td>
+                                                    <td>Kshs. $unitprice</td>
+                                                    <td>Kshs. $tamount</td>
+                                                   
 
                                                 </tr>
                                             ";
