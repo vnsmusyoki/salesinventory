@@ -1,5 +1,5 @@
 <?php
-include 'cashier.php';
+include 'admin.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,15 +10,14 @@ include 'cashier.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - Cashier Dashboard</title>
+    <title>Dashboard - Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
     <script data-search-pseudo-elements="" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous">
+    </script>
 </head>
 
 <body class="nav-fixed">
@@ -36,15 +35,12 @@ include 'cashier.php';
                                 <div class="col-auto mt-4">
                                     <h1 class="page-header-title">
                                         <div class="page-header-icon"><i data-feather="activity"></i></div>
-                                        Dashboard
+                                        All Products
                                     </h1>
-                                    <div class="page-header-subtitle">Overview and content summary</div>
+                                    <div class="page-header-subtitle">Manage Your Products from this page</div>
                                 </div>
                                 <div class="col-12 col-xl-auto mt-4">
-                                    <div class="input-group input-group-joined border-0" style="width: 16.5rem">
-                                        <span class="input-group-text"><i class="text-primary" data-feather="calendar"></i></span>
-                                        <input class="form-control ps-0 pointer" id="litepickerRangePlugin" placeholder="Select date range..." />
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -53,11 +49,11 @@ include 'cashier.php';
                 <!-- Main page content-->
                 <div class="container-xl px-4 mt-n10">
 
-                    
+
                     <div class="card mb-4">
                         <div class="card-header">All Products</div>
                         <div class="card-body">
-                        <table class="display" id="products" style="width:100%;">
+                            <table id="datatablesSimple">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -67,9 +63,23 @@ include 'cashier.php';
                                         <th>manufacture Date</th>
                                         <th>Expiry Date</th>
                                         <th>Unit Price</th>
-                                        <th>Quantity</th> 
+                                        <th>Quantity</th>
+                                        <th>Actions</th>
                                     </tr>
-                                </thead> 
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Batch Number</th>
+                                        <th>Category</th>
+                                        <th>SUb Category</th>
+                                        <th>manufacture Date</th>
+                                        <th>Expiry Date</th>
+                                        <th>Unit Price</th>
+                                        <th>Quantity</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tfoot>
                                 <tbody>
 
                                     <?php
@@ -101,7 +111,10 @@ include 'cashier.php';
                                                     <td>$expiry</td>
                                                     <td>$price</td>
                                                     <td>$amount</td>
-                                                     
+                                                    <td>
+                                                    <a href='edit-product.php?product=$proid' class='btn btn-datatable btn-icon btn-transparent-dark me-2'><i data-feather='edit-3'></i></a>
+                                                    <a href='delete-product.php?product=$proid' class='btn btn-datatable btn-icon btn-transparent-dark'><i data-feather='trash-2'></i></a>
+                                                    </td>
 
                                                 </tr>
                                             ";
@@ -131,34 +144,17 @@ include 'cashier.php';
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
-    
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables/datatables-simple-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
     <script src="js/litepicker.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-    <script>
-        $(document).ready(function() {
-    $('#admins').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'print'
-        ]
-    } );
-    $('#products').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'print'
-        ]
-    } );
-} );
-    </script>
+
 </body>
 
 </html>
