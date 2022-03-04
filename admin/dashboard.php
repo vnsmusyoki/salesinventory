@@ -17,78 +17,12 @@ include 'admin.php';
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
     <script data-search-pseudo-elements="" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
 </head>
 
 <body class="nav-fixed">
-    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
-        <!-- Sidenav Toggle Button-->
-        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>
-   
-        <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">SB Admin Pro</a>
-        <!-- Navbar Search Input-->
-        <!-- * * Note: * * Visible only on and above the lg breakpoint-->
-        <form class="form-inline me-auto d-none d-lg-block me-3">
-            <div class="input-group input-group-joined input-group-solid">
-                <input class="form-control pe-0" type="search" placeholder="Search" aria-label="Search" />
-                <div class="input-group-text"><i data-feather="search"></i></div>
-            </div>
-        </form>
-        <!-- Navbar Items-->
-        <ul class="navbar-nav align-items-center ms-auto">
-            <!-- Documentation Dropdown-->
-            <li class="nav-item dropdown no-caret d-none d-md-block me-3">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   
-                    <i class="fas fa-chevron-right dropdown-arrow"></i>
-                </a>
-               
-            </li>
-            <!-- Navbar Search Dropdown-->
-            <!-- * * Note: * * Visible only below the lg breakpoint-->
-            <li class="nav-item dropdown no-caret me-3 d-lg-none">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="search"></i></a>
-                <!-- Dropdown - Search-->
-                <div class="dropdown-menu dropdown-menu-end p-3 shadow animated--fade-in-up" aria-labelledby="searchDropdown">
-                    <form class="form-inline me-auto w-100">
-                        <div class="input-group input-group-joined input-group-solid">
-                            <input class="form-control pe-0" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                            <div class="input-group-text"><i data-feather="search"></i></div>
-                        </div>
-                    </form>
-                </div>
-            </li>
-            <!-- Alerts Dropdown-->
-            <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
-            </li>
-            <!-- Messages Dropdown-->
-            <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="mail"></i></a>
-            </li>
-            <!-- User Dropdown-->
-            <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="assets/img/illustrations/profiles/profile-1.png" /></a>
-                <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
-                    <h6 class="dropdown-header d-flex align-items-center">
-                        <img class="dropdown-user-img" src="assets/img/illustrations/profiles/profile-1.png" />
-                        <div class="dropdown-user-details">
-                            <div class="dropdown-user-details-name"><?php echo $globaluserfullname; ?></div>
-                            <div class="dropdown-user-details-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d4a2b8a1bab594b5bbb8fab7bbb9"><?php echo $globaluseremail; ?></a></div>
-                        </div>
-                    </h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="account-security.php">
-                        <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                        Update Account
-                    </a>
-                    <a class="dropdown-item" href="logout.php">
-                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                        Logout
-                    </a>
-                </div>
-            </li>
-        </ul>
-    </nav>
+    <?php include 'header.php'; ?>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <?php include 'sidebar.php' ?>
@@ -104,7 +38,7 @@ include 'admin.php';
                                         <div class="page-header-icon"><i data-feather="activity"></i></div>
                                         Dashboard
                                     </h1>
-                                    <div class="page-header-subtitle">Example dashboard overview and content summary</div>
+                                    <div class="page-header-subtitle">Overview and content summary</div>
                                 </div>
                                 <div class="col-12 col-xl-auto mt-4">
                                     <div class="input-group input-group-joined border-0" style="width: 16.5rem">
@@ -118,7 +52,7 @@ include 'admin.php';
                 </header>
                 <!-- Main page content-->
                 <div class="container-xl px-4 mt-n10">
-                    
+
                     <!-- Example Colored Cards for Dashboard Demo-->
                     <div class="row">
                         <div class="col-lg-6 col-xl-3 mb-4">
@@ -126,14 +60,23 @@ include 'admin.php';
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
-                                            <div class="text-white-75 small">Earnings (Monthly)</div>
-                                            <div class="text-lg fw-bold">$40,000</div>
+                                            <div class="text-white-75 small">Products</div>
+                                            <div class="text-lg fw-bold">
+                                                <?php
+                                                include '../db-connection.php';
+                                                $products = "SELECT * FROM `product`";
+                                                $queryproducts = mysqli_query($conn, $products);
+                                                $productsrows = mysqli_num_rows($queryproducts);
+                                                echo $productsrows;
+                                                ?>
+
+                                            </div>
                                         </div>
                                         <i class="feather-xl text-white-50" data-feather="calendar"></i>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between small">
-                                    <a class="text-white stretched-link" href="#!">View Report</a>
+                                    <a class="text-white stretched-link" href="all-products.php">View Report</a>
                                     <div class="text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -143,14 +86,31 @@ include 'admin.php';
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
-                                            <div class="text-white-75 small">Earnings (Annual)</div>
-                                            <div class="text-lg fw-bold">$215,000</div>
+                                            <div class="text-white-75 small">Sales Returns</div>
+                                            <div class="text-lg fw-bold">
+                                                <?php
+                                                include '../db-connection.php';
+                                                $purchases = "SELECT * FROM `sales`";
+                                                $querypurchases = mysqli_query($conn, $purchases);
+                                                $purchasesrows = mysqli_num_rows($querypurchases);
+                                                $totalamount = 0;
+                                                if ($purchasesrows >= 1) {
+                                                    $count = 1;
+                                                    while ($fetch  = mysqli_fetch_assoc($querypurchases)) {
+
+                                                        $amount = $fetch['sales_returns'];
+                                                        $totalamount += $amount;
+                                                    }
+                                                }
+                                                echo "Kshs." . $totalamount;
+                                                ?>
+                                            </div>
                                         </div>
                                         <i class="feather-xl text-white-50" data-feather="dollar-sign"></i>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between small">
-                                    <a class="text-white stretched-link" href="#!">View Report</a>
+                                    <a class="text-white stretched-link" href="all-sales.php">View Report</a>
                                     <div class="text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -160,14 +120,32 @@ include 'admin.php';
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
-                                            <div class="text-white-75 small">Task Completion</div>
-                                            <div class="text-lg fw-bold">24</div>
+                                            <div class="text-white-75 small">Purchase Returns</div>
+                                            <div class="text-lg fw-bold">
+                                                <?php
+                                                include '../db-connection.php';
+                                                $purchases = "SELECT * FROM `purchases`";
+                                                $querypurchases = mysqli_query($conn, $purchases);
+                                                $purchasesrows = mysqli_num_rows($querypurchases);
+                                                $totalamount = 0;
+                                                if ($purchasesrows >= 1) {
+                                                    $count = 1;
+                                                    while ($fetch  = mysqli_fetch_assoc($querypurchases)) {
+
+                                                        $amount = $fetch['purchases_returns'];
+                                                        $totalamount += $amount;
+                                                    }
+                                                }
+                                                echo "Kshs." . $totalamount;
+                                                ?>
+
+                                            </div>
                                         </div>
                                         <i class="feather-xl text-white-50" data-feather="check-square"></i>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between small">
-                                    <a class="text-white stretched-link" href="#!">View Tasks</a>
+                                    <a class="text-white stretched-link" href="all-purchases.php">View purchases</a>
                                     <div class="text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -177,185 +155,142 @@ include 'admin.php';
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
-                                            <div class="text-white-75 small">Pending Requests</div>
-                                            <div class="text-lg fw-bold">17</div>
+                                            <div class="text-white-75 small">All Suppliers</div>
+                                            <div class="text-lg fw-bold">
+                                                <?php
+                                                include '../db-connection.php';
+                                                $suppliers = "SELECT * FROM `supplier`";
+                                                $querysuppliers = mysqli_query($conn, $suppliers);
+                                                $suppliersrows = mysqli_num_rows($querysuppliers);
+
+                                                echo $suppliersrows;
+                                                ?>
+                                            </div>
                                         </div>
                                         <i class="feather-xl text-white-50" data-feather="message-circle"></i>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between small">
-                                    <a class="text-white stretched-link" href="#!">View Requests</a>
+                                    <a class="text-white stretched-link" href="all-suppliers.php">View Requests</a>
                                     <div class="text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Example Charts for Dashboard Demo-->
-                    <div class="row">
-                        <div class="col-xl-6 mb-4">
-                            <div class="card card-header-actions h-100">
-                                <div class="card-header">
-                                    Earnings Breakdown
-                                    <div class="dropdown no-caret">
-                                        <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="areaChartDropdownExample" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-gray-500" data-feather="more-vertical"></i></button>
-                                        <div class="dropdown-menu dropdown-menu-end animated--fade-in-up" aria-labelledby="areaChartDropdownExample">
-                                            <a class="dropdown-item" href="#!">Last 12 Months</a>
-                                            <a class="dropdown-item" href="#!">Last 30 Days</a>
-                                            <a class="dropdown-item" href="#!">Last 7 Days</a>
-                                            <a class="dropdown-item" href="#!">This Month</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#!">Custom Range</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-area"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 mb-4">
-                            <div class="card card-header-actions h-100">
-                                <div class="card-header">
-                                    Monthly Revenue
-                                    <div class="dropdown no-caret">
-                                        <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="areaChartDropdownExample" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-gray-500" data-feather="more-vertical"></i></button>
-                                        <div class="dropdown-menu dropdown-menu-end animated--fade-in-up" aria-labelledby="areaChartDropdownExample">
-                                            <a class="dropdown-item" href="#!">Last 12 Months</a>
-                                            <a class="dropdown-item" href="#!">Last 30 Days</a>
-                                            <a class="dropdown-item" href="#!">Last 7 Days</a>
-                                            <a class="dropdown-item" href="#!">This Month</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#!">Custom Range</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-bar"><canvas id="myBarChart" width="100%" height="30"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Example DataTable for Dashboard Demo-->
                     <div class="card mb-4">
-                        <div class="card-header">Personnel Management</div>
+                        <div class="card-header">Admin Management</div>
                         <div class="card-body">
-                            <table id="datatablesSimple">
+                            <table class="display" id="admins" style="width:100%;">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th>#</th>
+                                        <th>Username</th>
+                                        <th>FUll Names</th>
+                                        <th>Email Address</th>
+                                        <th>Phone Number</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </tfoot>
                                 <tbody>
+
+                                    <?php
+                                    include '../db-connection.php';
+                                    $admin = "SELECT * FROM `admin`";
+                                    $queryadmin = mysqli_query($conn, $admin);
+                                    $adminrows = mysqli_num_rows($queryadmin);
+                                    if ($adminrows >= 1) {
+                                        $count = 1;
+                                        while ($fetch  = mysqli_fetch_assoc($queryadmin)) {
+                                            $name = $fetch['admin_full_names'];
+                                            $phonenumber = $fetch['admin_phone_number'];
+                                            $emailaddress = $fetch['admin_email_address'];
+
+                                            $loginid = $fetch['admin_login_id'];
+                                            $user = "SELECT * FROM `login` WHERE `login_id` = '$loginid'";
+                                            $queryuser = mysqli_query($conn, $user);
+                                            $userrows = mysqli_num_rows($queryuser);
+                                            if ($userrows >= 1) {
+                                                $count = 1;
+                                                while ($fetchdata  = mysqli_fetch_assoc($queryuser)) {
+                                                    $username = $fetchdata['login_username'];
+                                                }
+                                            }
+
+                                            echo "
+                                                <tr>
+                                                    <td>$count</td>
+                                                    <td>$username</td>
+                                                    <td>$name</td>
+                                                    <td>$emailaddress</td>
+                                                    <td>$phonenumber</td>  
+                                                    
+                                                </tr>
+                                            ";
+                                                                                $count++;
+                                                                            }
+                                                                        }
+
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">All Products</div>
+                        <div class="card-body">
+                        <table class="display" id="products" style="width:100%;">
+                                <thead>
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                        <td>
-                                            <div class="badge bg-primary text-white rounded-pill">Full-time</div>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i data-feather="more-vertical"></i></button>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-                                        </td>
+                                        <th>#</th>
+                                        <th>Batch Number</th>
+                                        <th>Category</th>
+                                        <th>SUb Category</th>
+                                        <th>manufacture Date</th>
+                                        <th>Expiry Date</th>
+                                        <th>Unit Price</th>
+                                        <th>Quantity</th> 
                                     </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                        <td>
-                                            <div class="badge bg-warning rounded-pill">Pending</div>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i data-feather="more-vertical"></i></button>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12</td>
-                                        <td>$86,000</td>
-                                        <td>
-                                            <div class="badge bg-secondary text-white rounded-pill">Part-time</div>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i data-feather="more-vertical"></i></button>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012/03/29</td>
-                                        <td>$433,060</td>
-                                        <td>
-                                            <div class="badge bg-info rounded-pill">Contract</div>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i data-feather="more-vertical"></i></button>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-                                        </td>
-                                    </tr>
-                                     
-                                    <tr>
-                                        <td>Michael Bruce</td>
-                                        <td>Javascript Developer</td>
-                                        <td>Singapore</td>
-                                        <td>29</td>
-                                        <td>2011/06/27</td>
-                                        <td>$183,000</td>
-                                        <td>
-                                            <div class="badge bg-primary text-white rounded-pill">Full-time</div>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i data-feather="more-vertical"></i></button>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Donna Snider</td>
-                                        <td>Customer Support</td>
-                                        <td>New York</td>
-                                        <td>27</td>
-                                        <td>2011/01/25</td>
-                                        <td>$112,000</td>
-                                        <td>
-                                            <div class="badge bg-secondary text-white rounded-pill">Part-time</div>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i data-feather="more-vertical"></i></button>
-                                            <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-                                        </td>
-                                    </tr>
+                                </thead> 
+                                <tbody>
+
+                                    <?php
+                                    include '../db-connection.php';
+                                    $products = "SELECT * FROM `product`";
+                                    $queryproducts = mysqli_query($conn, $products);
+                                    $productsrows = mysqli_num_rows($queryproducts);
+                                    if ($productsrows >= 1) {
+                                        $count = 1;
+                                        while ($fetch  = mysqli_fetch_assoc($queryproducts)) {
+                                            $batch = $fetch['product_batch_number'];
+                                            $cat = $fetch['product_category'];
+                                            $subcat = $fetch['product_sub_category'];
+                                            $description = $fetch['product_description'];
+                                            $mfgdate = $fetch['product_date_of_manufacture'];
+                                            $expiry = $fetch['product_expiry_date'];
+                                            $price = $fetch['product_unit_price'];
+                                            $amount = $fetch['product_amount'];
+                                            $proid = $fetch['product_id'];
+
+
+                                            echo "
+                                                <tr>
+                                                    <td>$count</td>
+                                                    <td>$batch</td>
+                                                    <td>$cat</td>
+                                                    <td>$subcat</td>
+                                                    <td>$mfgdate</td>
+                                                    <td>$expiry</td>
+                                                    <td>$price</td>
+                                                    <td>$amount</td>
+                                                     
+
+                                                </tr>
+                                            ";
+                                                                                $count++;
+                                                                            }
+                                                                        }
+
+                                    ?>
+
                                 </tbody>
                             </table>
                         </div>
@@ -375,17 +310,35 @@ include 'admin.php';
             </footer>
         </div>
     </div>
-  
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables/datatables-simple-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
     <script src="js/litepicker.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    $('#admins').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
+    } );
+    $('#products').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
+    } );
+} );
+    </script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <?php
 include 'admin.php';
 ?>
-<?php $customer_contact = $full_names = $customer_email = $customer_location   = $message = ''; ?>
+<?php $admin_contact = $full_names = $admin_email = $username   = $message = ''; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,9 +64,9 @@ include 'admin.php';
                                                 <form method="POST" action="">
                                                     <?php
 
-                                                    if (isset($_POST["addcustomer"])) {
+                                                    if (isset($_POST["addadmin"])) {
 
-                                                        require 'functions/add-customer.php';
+                                                        require 'functions/add-admin.php';
                                                     }
                                                     ?>
                                                     <?php echo $message; ?>
@@ -78,22 +78,22 @@ include 'admin.php';
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
-                                                            <label for="exampleFormControlInput1">Customer Location</label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="customer_location" value="<?php echo $customer_location; ?>" />
+                                                            <label for="exampleFormControlInput1">Username</label>
+                                                            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="username" value="<?php echo $username; ?>" />
                                                         </div>
                                                         <div class="col-lg-6">
-                                                            <label for="exampleFormControlInput1">Customer Email </label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="email" placeholder="" name="customer_email" value="<?php echo $customer_email; ?>" />
+                                                            <label for="exampleFormControlInput1"> Email </label>
+                                                            <input class="form-control" id="exampleFormControlInput1" type="email" placeholder="" name="admin_email" value="<?php echo $admin_email; ?>" />
                                                         </div>
                                                         <div class="col-lg-6">
-                                                            <label for="exampleFormControlInput1">Customer Contact </label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="customer_contact" value="<?php echo $customer_contact; ?>" />
+                                                            <label for="exampleFormControlInput1"> Contact </label>
+                                                            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="admin_contact" value="<?php echo $admin_contact; ?>" />
                                                         </div>
                                                     </div>
                                                    
 
                                                     <br>
-                                                    <button class="btn btn-primary btn-sm" type="submit" name="addcustomer">Upload New Customer</button>
+                                                    <button class="btn btn-primary btn-sm" type="submit" name="addadmin">Register Admin</button>
                                                 </form>
                                             </div>
                                         </div>

@@ -15,14 +15,13 @@ include 'admin.php';
     <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
-    <script data-search-pseudo-elements="" defer=""
-        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script data-search-pseudo-elements="" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous">
     </script>
 </head>
 
 <body class="nav-fixed">
- <?php include 'header.php'; ?>
+    <?php include 'header.php'; ?>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <?php include 'sidebar.php' ?>
@@ -82,48 +81,49 @@ include 'admin.php';
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    
-<?php
-include '../db-connection.php';
-$products = "SELECT * FROM `product`";
-$queryproducts = mysqli_query($conn, $products);
-$productsrows = mysqli_num_rows($queryproducts);
-if ($productsrows >= 1) {
-    $count = 1;
-    while ($fetch  = mysqli_fetch_assoc($queryproducts)) {
-        $batch = $fetch['product_batch_number']; 
-        $cat = $fetch['product_category']; 
-        $subcat = $fetch['product_sub_category']; 
-        $description = $fetch['product_description']; 
-        $mfgdate = $fetch['product_date_of_manufacture']; 
-        $expiry = $fetch['product_expiry_date']; 
-        $price = $fetch['product_unit_price']; 
-        $amount = $fetch['product_amount']; 
-        $proid = $fetch['product_id'];
+
+                                    <?php
+                                    include '../db-connection.php';
+                                    $products = "SELECT * FROM `product`";
+                                    $queryproducts = mysqli_query($conn, $products);
+                                    $productsrows = mysqli_num_rows($queryproducts);
+                                    if ($productsrows >= 1) {
+                                        $count = 1;
+                                        while ($fetch  = mysqli_fetch_assoc($queryproducts)) {
+                                            $batch = $fetch['product_batch_number'];
+                                            $cat = $fetch['product_category'];
+                                            $subcat = $fetch['product_sub_category'];
+                                            $description = $fetch['product_description'];
+                                            $mfgdate = $fetch['product_date_of_manufacture'];
+                                            $expiry = $fetch['product_expiry_date'];
+                                            $price = $fetch['product_unit_price'];
+                                            $amount = $fetch['product_amount'];
+                                            $proid = $fetch['product_id'];
 
 
-        echo "
-            <tr>
-                <td>$count</td>
-                <td>$batch</td>
-                <td>$cat</td>
-                <td>$subcat</td>
-                <td>$mfgdate</td>
-                <td>$expiry</td>
-                <td>$price</td>
-                <td>$amount</td>
-                <td>
-                <a href='edit-product.php?product=$proid' class='btn btn-datatable btn-icon btn-transparent-dark me-2'><i data-feather='edit-3'></i></a>
-                <a href='delete-product.php?product=$proid' class='btn btn-datatable btn-icon btn-transparent-dark'><i data-feather='trash-2'></i></a>
-                </td>
+                                            echo "
+                                                <tr>
+                                                    <td>$count</td>
+                                                    <td>$batch</td>
+                                                    <td>$cat</td>
+                                                    <td>$subcat</td>
+                                                    <td>$mfgdate</td>
+                                                    <td>$expiry</td>
+                                                    <td>$price</td>
+                                                    <td>$amount</td>
+                                                    <td>
+                                                    <a href='edit-product.php?product=$proid' class='btn btn-datatable btn-icon btn-transparent-dark me-2'><i data-feather='edit-3'></i></a>
+                                                    <a href='delete-product.php?product=$proid' class='btn btn-datatable btn-icon btn-transparent-dark'><i data-feather='trash-2'></i></a>
+                                                    </td>
 
-            </tr>
-        ";
-        $count ++;
-    }}
+                                                </tr>
+                                            ";
+                                                                                $count++;
+                                                                            }
+                                                                        }
 
-?>
-                                    
+                                    ?>
+
                                 </tbody>
                             </table>
                         </div>
