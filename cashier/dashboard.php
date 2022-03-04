@@ -62,8 +62,9 @@ include 'cashier.php';
                                     <tr>
                                         <th>#</th>
                                         <th>Batch Number</th>
+                                        <th>Product Name</th>
                                         <th>Category</th>
-                                        <th>SUb Category</th>
+                                        <th>Sub Category</th>
                                         <th>manufacture Date</th>
                                         <th>Expiry Date</th>
                                         <th>Unit Price</th>
@@ -82,6 +83,7 @@ include 'cashier.php';
                                         while ($fetch  = mysqli_fetch_assoc($queryproducts)) {
                                             $batch = $fetch['product_batch_number'];
                                             $cat = $fetch['product_category'];
+                                            $product = $fetch['product_name'];
                                             $subcat = $fetch['product_sub_category'];
                                             $description = $fetch['product_description'];
                                             $mfgdate = $fetch['product_date_of_manufacture'];
@@ -95,6 +97,7 @@ include 'cashier.php';
                                                 <tr>
                                                     <td>$count</td>
                                                     <td>$batch</td>
+                                                    <td>$product</td>
                                                     <td>$cat</td>
                                                     <td>$subcat</td>
                                                     <td>$mfgdate</td>

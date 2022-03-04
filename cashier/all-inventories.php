@@ -1,5 +1,5 @@
 <?php
-include 'admin.php';
+include 'cashier.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,43 +57,36 @@ include 'admin.php';
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Product</th>
-                                        <th>Sales ID</th>
-                                        <th>Purchases ID</th>
-                                        <th>Sales Returns</th>
-                                        <th>Purchase Returns</th>
-                                        <th>Actions</th>
+                                        <th>Product</th> 
+                                        <th>Total Quantity</th>
+                                        <th>Sales Return</th>
+                                        <th>Purchase Return</th> 
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Product</th>
-                                        <th>Sales ID</th>
-                                        <th>Purchases ID</th>
-                                        <th>Sales Returns</th>
-                                        <th>Purchase Returns</th> 
-                                        <th>Actions</th>
+                                    <th>#</th>
+                                        <th>Product</th> 
+                                        <th>Total Quantity</th>
+                                        <th>Sales Return</th>
+                                        <th>Purchase Return</th> 
                                     </tr>
                                 </tfoot>
                                 <tbody>
 
                                     <?php
                                     include '../db-connection.php';
-                                    $purchases = "SELECT * FROM `purchases`";
-                                    $querypurchases = mysqli_query($conn, $purchases);
-                                    $purchasesrows = mysqli_num_rows($querypurchases);
-                                    if ($purchasesrows >= 1) {
+                                    $inventory = "SELECT * FROM `inventory`";
+                                    $queryinventory = mysqli_query($conn, $inventory);
+                                    $inventoryrows = mysqli_num_rows($queryinventory);
+                                    if ($inventoryrows >= 1) {
                                         $count = 1;
-                                        while ($fetch  = mysqli_fetch_assoc($querypurchases)) {
-                                            $date = $fetch['purchases_date'];
-                                            $supplier = $fetch['purchases_supplier_id'];
-                                            $product = $fetch['purchases_product_id'];
-                                            $quantity = $fetch['purchases_quantity'];
-                                            $unitprice = $fetch['purchases_product_unit_price'];
-                                            $returns = $fetch['purchases_returns'];
-                                            $tamount = $fetch['purchases_total_amount'];
-                                            $purchaseid = $fetch['purchases_id'];
+                                        while ($fetch  = mysqli_fetch_assoc($queryinventory)) {
+                                            $quantity = $fetch['inventory_quantity'];
+                                            $sales = $fetch['inventory_sales_returns'];
+                                            $product = $fetch['inventory_products_id'];
+                                            $purchases = $fetch['inventory_purchases_returns']; 
+                                            $inventid = $fetch['inventory_id']; 
 
                                             $product = "SELECT * FROM `product` WHERE `product_id`='$product'";
                                             $queryproduct = mysqli_query($conn, $product);
@@ -105,29 +98,16 @@ include 'admin.php';
                                                 }
                                             }
 
-                                            $suppliercheck = "SELECT * FROM `supplier` WHERE `supplier_id`='$supplier'";
-                                            $querysuppliercheck = mysqli_query($conn, $suppliercheck);
-                                            $suppliercheckrows = mysqli_num_rows($querysuppliercheck);
-                                            if ($suppliercheckrows >= 1) {
-                                                $count = 1;
-                                                while ($fetch  = mysqli_fetch_assoc($querysuppliercheck)) { 
-                                                    $suppliercontact = $fetch['supplier_contact'];
-                                                    $suppliername = $fetch['supplier_name'];
-                                                }
-                                            }
+                                           
 
                                             echo "
                                                 <tr>
                                                     <td>$count</td>
-                                                    <td>$date</td>
-                                                    <td>$suppliername - $suppliercontact</td>
-                                                    <td>$productname</td>
-                                                    <td>$quantity</td>
-                                                    <td>$unitprice</td> 
-                                                    <td>
-                                                    <a href='edit-purchases.php?purchases=$purchaseid' class='btn btn-datatable btn-icon btn-transparent-dark me-2'><i data-feather='edit-3'></i></a>
-                                                    <a href='delete-purchases.php?purchases=$purchaseid' class='btn btn-datatable btn-icon btn-transparent-dark'><i data-feather='trash-2'></i></a>
-                                                    </td>
+                                                    <td>$productname</td> 
+                                                    <td>$quantity</td> 
+                                                    <td>$sales</td>
+                                                    <td>$purchases</td> 
+                                                
 
                                                 </tr>
                                             ";

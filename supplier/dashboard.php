@@ -77,6 +77,7 @@ include 'supplier.php';
                                     $querypurchases = mysqli_query($conn, $purchases);
                                     $purchasesrows = mysqli_num_rows($querypurchases);
                                     if ($purchasesrows >= 1) {
+
                                         $count = 1;
                                         while ($fetch  = mysqli_fetch_assoc($querypurchases)) {
                                             $date = $fetch['purchases_date'];
@@ -92,7 +93,7 @@ include 'supplier.php';
                                             $queryproduct = mysqli_query($conn, $product);
                                             $productrows = mysqli_num_rows($queryproduct);
                                             if ($productrows >= 1) {
-                                                $count = 1;
+                                                 
                                                 while ($fetch  = mysqli_fetch_assoc($queryproduct)) { 
                                                     $productname = $fetch['product_name'];
                                                 }
@@ -102,7 +103,7 @@ include 'supplier.php';
                                             $querysuppliercheck = mysqli_query($conn, $suppliercheck);
                                             $suppliercheckrows = mysqli_num_rows($querysuppliercheck);
                                             if ($suppliercheckrows >= 1) {
-                                                $count = 1;
+                                               
                                                 while ($fetch  = mysqli_fetch_assoc($querysuppliercheck)) { 
                                                     $suppliercontact = $fetch['supplier_contact'];
                                                     $suppliername = $fetch['supplier_name'];
@@ -124,6 +125,7 @@ include 'supplier.php';
                                             ";
                                             $count++;
                                         }
+                                       
                                     }
 
                                     ?>
