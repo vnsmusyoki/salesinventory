@@ -45,8 +45,7 @@
                 <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapsePages" data-bs-parent="#accordionSidenav">
-                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
-                    <a class="nav-link" href="add-inventory.php">Add Inventory</a>
+                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu"> 
                     <a class="nav-link" href="all-inventories.php">All Inventories</a>
                 </nav>
             </div>

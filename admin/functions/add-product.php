@@ -7,14 +7,21 @@ $product_category = mysqli_real_escape_string($conn, $_POST['product_category'])
 $product_subcategory = mysqli_real_escape_string($conn, $_POST['product_subcategory']); 
 $unit_price = mysqli_real_escape_string($conn, $_POST['unit_price']);
 $product_amount = mysqli_real_escape_string($conn, $_POST['product_amount']); 
+$product_name = mysqli_real_escape_string($conn, $_POST['product_name']); 
 $description = mysqli_real_escape_string($conn, $_POST['description']);  
 $batch_length = strlen($batch_number); 
-if (empty($batch_number) || empty($manufacture_date) || empty($expiry_date) || empty($product_category) || empty($product_subcategory) || empty($unit_price) || empty($product_amount) || empty($description)) {
+if (empty($batch_number) || empty($product_name) || empty($manufacture_date) || empty($expiry_date) || empty($product_category) || empty($product_subcategory) || empty($unit_price) || empty($product_amount) || empty($description)) {
     $message = "
         <script>
             toastr.error('Please Provide all the details needed');
         </script>
     ";
+} else if (!preg_match("/^[a-zA-z ]*$/", $product_name)) {
+    $message = "
+        <script>
+            toastr.error('Provided an invalid product name characters');
+        </script>
+    "; 
 } else if (!preg_match("/^[a-zA-z0-9 ]*$/", $batch_number)) {
     $message = "
         <script>
@@ -38,7 +45,7 @@ if (empty($batch_number) || empty($manufacture_date) || empty($expiry_date) || e
         </script>";
     } else {
                 $password = md5($password);
-                $insertproduct = "INSERT INTO `product`(`product_category`, `product_sub_category`, `product_description`, `product_date_of_manufacture`, `product_batch_number`, `product_expiry_date`, `product_unit_price`, `product_amount`) VALUES ('$product_category','$product_subcategory','$description','$manufacture_date','$batch_number','$expiry_date','$unit_price','$product_amount')";
+                $insertproduct = "INSERT INTO `product`(`product_name`,`product_category`, `product_sub_category`, `product_description`, `product_date_of_manufacture`, `product_batch_number`, `product_expiry_date`, `product_unit_price`, `product_amount`) VALUES ('$product_name','$product_category','$product_subcategory','$description','$manufacture_date','$batch_number','$expiry_date','$unit_price','$product_amount')";
                 $querylogin = mysqli_query($conn, $insertproduct);
                 $lastid =  mysqli_insert_id($conn);
                 if ($querylogin) { 

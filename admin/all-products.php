@@ -58,6 +58,7 @@ include 'admin.php';
                                     <tr>
                                         <th>#</th>
                                         <th>Batch Number</th>
+                                        <th>Product</th>
                                         <th>Category</th>
                                         <th>SUb Category</th>
                                         <th>manufacture Date</th>
@@ -71,6 +72,7 @@ include 'admin.php';
                                     <tr>
                                         <th>#</th>
                                         <th>Batch Number</th>
+                                        <th>Product</th>
                                         <th>Category</th>
                                         <th>SUb Category</th>
                                         <th>manufacture Date</th>
@@ -92,6 +94,7 @@ include 'admin.php';
                                         while ($fetch  = mysqli_fetch_assoc($queryproducts)) {
                                             $batch = $fetch['product_batch_number'];
                                             $cat = $fetch['product_category'];
+                                            $product = $fetch['product_name'];
                                             $subcat = $fetch['product_sub_category'];
                                             $description = $fetch['product_description'];
                                             $mfgdate = $fetch['product_date_of_manufacture'];
@@ -105,6 +108,7 @@ include 'admin.php';
                                                 <tr>
                                                     <td>$count</td>
                                                     <td>$batch</td>
+                                                    <td>$product</td>
                                                     <td>$cat</td>
                                                     <td>$subcat</td>
                                                     <td>$mfgdate</td>

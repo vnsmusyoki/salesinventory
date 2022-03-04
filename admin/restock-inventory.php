@@ -2,6 +2,41 @@
 include 'admin.php';
 ?>
 <?php $purchase_date = $purchase_returns = $unit_price = $quantity   = $message = ''; ?>
+<?php
+include '../db-connection.php';
+$purchaserecord = $_GET['inventory'];
+global $purchaserecord;
+$purchases = "SELECT * FROM `inventory` WHERE `inventory_id` = '$purchaserecord'";
+$querypurchases = mysqli_query($conn, $purchases);
+$purchasesrows = mysqli_num_rows($querypurchases);
+if ($purchasesrows >= 1) {
+    $count = 1;
+    while ($fetch  = mysqli_fetch_assoc($querypurchases)) {
+        $quantity = $fetch['inventory_quantity'];
+        $sales = $fetch['inventory_sales_returns'];
+        $product = $fetch['inventory_products_id'];
+        $purchases = $fetch['inventory_purchases_returns']; 
+        $inventid = $fetch['inventory_id']; 
+
+        $product = "SELECT * FROM `product` WHERE `product_id`='$product'";
+        $queryproduct = mysqli_query($conn, $product);
+        $productrows = mysqli_num_rows($queryproduct);
+        if ($productrows >= 1) {
+            $count = 1;
+            while ($fetch  = mysqli_fetch_assoc($queryproduct)) { 
+                $productname = $fetch['product_name'];
+            }
+        }
+
+      
+
+        global $globaldate;
+        global $globalquantity;
+        global $globalunitprice;
+        global $globalreturns;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,9 +76,9 @@ include 'admin.php';
                                 <div class="col-auto mt-4">
                                     <h1 class="page-header-title">
                                         <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                        Add Purchases
+                                        Restock this Product
                                     </h1>
-                                    <div class="page-header-subtitle">Upload Purchases</div>
+                                    <div class="page-header-subtitle">Restock Product</div>
                                 </div>
                             </div>
                         </div>
@@ -56,85 +91,31 @@ include 'admin.php';
                             <!-- Default Bootstrap Form Controls-->
                             <div id="default">
                                 <div class="card mb-4">
-                                    <div class="card-header">Adding New supplier</div>
+                                    <div class="card-header">Restock from the same supplier</div>
                                     <div class="card-body">
                                         <!-- Component Preview-->
                                         <div class="sbp-preview">
                                             <div class="sbp-preview-content">
                                                 <form method="POST" action="">
                                                     <?php
-                                                    if (isset($_POST["addsupplier"])) {
-
-                                                        require 'functions/add-purchase.php';
+                                                    if (isset($_POST["updateinventory"])) {
+                                                        require 'functions/update-inventory.php';
                                                     }
                                                     ?>
                                                     <?php echo $message; ?>
                                                     <div class="row">
                                                         <div class="col-lg-6">
-
-                                                            <div class="mb-3">
-                                                                <label for="exampleFormControlSelect1">
-                                                                    Supplier Name</label>
-                                                                <select class="form-control" id="exampleFormControlSelect1" name="supplier_id">
-                                                                    <option value="">click to select</option>
-                                                                    <?php
-                                                                    include '../db-connection.php';
-                                                                    
-                                                                    $suppliers = "SELECT * FROM `supplier`";
-                                                                    $querysuppliers = mysqli_query($conn, $suppliers);
-                                                                    $suppliersrows = mysqli_num_rows($querysuppliers);
-                                                                    if ($suppliersrows >= 1) {
-                                                                        $count = 1;
-                                                                        while ($fetch  = mysqli_fetch_assoc($querysuppliers)) {
-                                                                            $supplierid = $fetch['supplier_id'];
-                                                                            $name = $fetch['supplier_name'];
-                                                                            echo "<option value='$supplierid'>$name</option>";
-                                                                        }
-                                                                    }
-                                                                    ?> 
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <label for="exampleFormControlSelect1">Product
-                                                                Name</label>
-                                                            <select class="form-control" id="exampleFormControlSelect1" name="product_id">
-                                                                <option value="">click to select</option>
-                                                                <?php
-                                                                    include '../db-connection.php';
-                                                                    
-                                                                    $suppliers = "SELECT * FROM `product`";
-                                                                    $querysuppliers = mysqli_query($conn, $suppliers);
-                                                                    $suppliersrows = mysqli_num_rows($querysuppliers);
-                                                                    if ($suppliersrows >= 1) {
-                                                                        $count = 1;
-                                                                        while ($fetch  = mysqli_fetch_assoc($querysuppliers)) {
-                                                                            $productid = $fetch['product_id'];
-                                                                            $name = $fetch['product_name'];
-                                                                            echo "<option value='$supplierid'>$name</option>";
-                                                                        }
-                                                                    }
-                                                                    ?> 
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <div class="col-lg-6">
                                                             <label for="exampleFormControlInput1">Quantity</label>
-                                                            <input class="form-control" id="exampleFormControlInput1" type="number" placeholder="" name="quantity" value="<?php echo $quantity; ?>" />
+                                                            <input class="form-control" id="exampleFormControlInput1" type="number" placeholder="" name="quantity" min="1" value="<?php echo $quantity; ?>" />
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label for="exampleFormControlInput1">Unit Price</label>
                                                             <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="unit_price" value="<?php echo $unit_price; ?>" />
                                                         </div>
-                                                        
-
                                                     </div>
-
-
+                                                    <input type="hidden" name="inventoryid" value="<?php echo $purchaserecord; ?>">
                                                     <br>
-                                                    <button class="btn btn-primary btn-sm" type="submit" name="addsupplier">Add New Purchase</button>
+                                                    <button class="btn btn-danger btn-sm" type="submit" name="updateinventory">Update Stock</button>
                                                 </form>
                                             </div>
                                         </div>

@@ -1,7 +1,7 @@
 <?php
 include 'admin.php';
 ?>
-<?php $batch_number = $unit_price = $product_amount = $description   = $message = ''; ?>
+<?php $batch_number = $unit_price = $product_amount = $description = $product_name  = $message = ''; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,6 +71,12 @@ include 'admin.php';
                                                     ?>
                                                     <?php echo $message; ?>
                                                     <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="mb-3">
+                                                                <label for="exampleFormControlInput1">Product Name</label>
+                                                                <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" name="product_name" value="<?php echo $product_name; ?>" />
+                                                            </div>
+                                                        </div>
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlInput1">Batch
@@ -98,6 +104,7 @@ include 'admin.php';
                                                                     <option value="Electronics">Electronics</option>
                                                                     <option value="Computers">Computers</option>
                                                                     <option value="Furniture">Furniture</option>
+                                                                    <option value="Food">Food</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -111,6 +118,7 @@ include 'admin.php';
                                                                     <option value="Dell Machines">Dell Machines</option>
                                                                     <option value="Beds">Beds</option>
                                                                     <option value="Closets">Closets</option>
+                                                                    <option value="Cereals">Cereals</option>
                                                                 </select>
                                                             </div>
                                                         </div>

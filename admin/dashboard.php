@@ -1,4 +1,4 @@
-<?php
+                <?php
 include 'admin.php';
 ?>
 <!DOCTYPE html>
@@ -60,7 +60,9 @@ include 'admin.php';
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
-                                            <div class="text-white-75 small">Products</div>
+                                            <div class="text-white-75 small">Products
+                                                
+                                            </div>
                                             <div class="text-lg fw-bold">
                                                 <?php
                                                 include '../db-connection.php';
@@ -86,7 +88,7 @@ include 'admin.php';
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
-                                            <div class="text-white-75 small">Sales Returns</div>
+                                            <div class="text-white-75 small">Sales </div>
                                             <div class="text-lg fw-bold">
                                                 <?php
                                                 include '../db-connection.php';
@@ -98,7 +100,7 @@ include 'admin.php';
                                                     $count = 1;
                                                     while ($fetch  = mysqli_fetch_assoc($querypurchases)) {
 
-                                                        $amount = $fetch['sales_returns'];
+                                                        $amount = $fetch['sales_total_amount'];
                                                         $totalamount += $amount;
                                                     }
                                                 }
@@ -120,7 +122,7 @@ include 'admin.php';
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="me-3">
-                                            <div class="text-white-75 small">Purchase Returns</div>
+                                            <div class="text-white-75 small">Purchase </div>
                                             <div class="text-lg fw-bold">
                                                 <?php
                                                 include '../db-connection.php';
@@ -132,7 +134,7 @@ include 'admin.php';
                                                     $count = 1;
                                                     while ($fetch  = mysqli_fetch_assoc($querypurchases)) {
 
-                                                        $amount = $fetch['purchases_returns'];
+                                                        $amount = $fetch['purchases_total_amount'];
                                                         $totalamount += $amount;
                                                     }
                                                 }
