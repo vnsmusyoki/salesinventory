@@ -60,7 +60,7 @@
                                 </ul>
                             </li>
 
-                            <li class="lvl1"><a href="#"><b>Contact us!</b> <i class="anm anm-angle-down-l"></i></a></li>
+                            <li class="lvl1"><a href="#footer"><b>Contact us!</b> <i class="anm anm-angle-down-l"></i></a></li>
                         </ul>
                     </nav>
                     <!--End Desktop Menu-->
